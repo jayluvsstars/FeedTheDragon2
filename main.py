@@ -13,13 +13,18 @@ pygame.display.set_caption("Feed The Dragon")
 FPS = 60
 clock = pygame.time.Clock()
 
-#Set game values
-''' create a constant that stores player starting lives ang give it a starting value of 5 ''' # PLAYER_STARTING_lIVES
-''' create a constant that stores player velocity and give it a starting value of 10 '''
-''' create a constant that stores coin starting velocity and give it a starting value of 10 '''
-''' create a constant that stores coin velocity and give it a starting value of 10 '''
-''' create a constant that stores coin acceleration and give it a staring value of 0.5 '''
+#Set game value:  CONSTANT_NAME, value
+''' 5 CONSTANTS
+PLAYER_STARTING_LIVES, 5
+PLAYER_VELOCITY, 10
+COIN_STARTING_VELOCITY, 10
+COIN_ACCELERATION, 0.5
+BUFFER_DISTANCE, 100
+'''
+PLAYER_STARTING_LIVES = 5
 
+
+PLAYER_STARTING_LIVES = 5
 '''create a variable that tracks and score and give it a staring value of 0 '''
 ''' create a variable that tracks the player lives and set it equal to the constant that stores player starting lives '''
 ''' create a variable that tracks the coin velocity and set it equal to the constant that coin starting velocity '''
@@ -31,19 +36,30 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 #Set fonts
-''' create a varable called font and give it a value from the following: pygame.font.Font('AttackGraffiti.ttf', 32) '''
+font = pygame.font.Font('AttackGraffiti.ttf', 32)
 
-#Set text
 #Sets the text for the sorce
-''' create a variable that tracks score text and give it a value from the following: font.render("Score: " + str(score),True, GREEN, WHITE '''
 '''
-''' create a variable that tracks score rect and give it a value from the following: score_text.get_rect() '''
-''' score_rect.topleft = (10, 10)'''
+variable names:  score_text, score_rect
+render text: "Score: " + str(score)
+antialias: True
+color: GREEN
+background: DARKGREEN
+rect location: topleft = (10, 10)  
+'''
+score_text = font.render("Score: " + str(10), True, GREEN, DARK_GREEN)
+score_rect = score_text.get_rect()
+score_rect.topleft = (10, 10)
 
 #Sets the text for lives
-''' Same deal, variable name lives_text, "Lives: str(plater_lives), True, GREEN, DARKGREEN '''
-''' Same deal, variable name lives_rect, get from lives_text '''
-''' Same deal, topright = (WINDOW_WIDTH - 10, 10)'''
+'''
+variable names: lives_text, lives_rect
+render text: "Lives: " + str(player_lives)
+True
+color: GREEN
+background: DARKGREEN
+rect location: y = 10
+'''
 
 #Sets the text for game over
 '''
@@ -52,8 +68,17 @@ Rect: game_over_rect
 PHRASE: "GAMEOVER" ,
 Antialias: True
 Color: GREEN,
-Background: BARKGREEN,
+Background: DARKGREEN,
 Position: center = (WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2),
+'''
+#Set Text for Continue (Similar to Score)
+'''
+variable names: continue_text, continue_rect
+render text: "Press any key to play again"
+True
+color: GREEN
+background: DARKGREEN
+rect location: center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2 + 32)
 '''
 
 #The main game loop
@@ -62,5 +87,11 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+#Fill the display
+display_surface.fill(BLACK)
+
+display_surface.blit(score_text, score_rect)
+
 
 pygame.quit()
